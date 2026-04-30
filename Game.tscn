@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://duk0yxeqiqlg4" path="res://assets/Sprite.png" id="1_xkndl"]
 [ext_resource type="Script" uid="uid://bb5acpspjmm0a" path="res://player.gd" id="2_u44n3"]
 [ext_resource type="Texture2D" uid="uid://cmn41ko46t3j3" path="res://assets/Box.png" id="3_u44n3"]
+[ext_resource type="Texture2D" uid="uid://c83w7s5jgms7o" path="res://assets/raf.png" id="4_sb48q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u44n3"]
 atlas = ExtResource("1_xkndl")
@@ -149,3 +150,9 @@ texture = ExtResource("3_u44n3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box2/Area2D" unique_id=75308544]
 position = Vector2(-0.2108841, -3.5254211)
 shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1080423223]
+texture_filter = 3
+position = Vector2(118.999985, 176.99998)
+scale = Vector2(2.7656245, 2.863696)
+texture = ExtResource("4_sb48q")
