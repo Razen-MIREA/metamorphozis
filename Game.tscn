@@ -105,13 +105,13 @@ animations = [{
 size = Vector2(21.714298, 22.785717)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb48q"]
-size = Vector2(32.367348, 31.152542)
+size = Vector2(32.367348, 22.237282)
 
 [node name="Node2D" type="Node2D" unique_id=211646541]
 
 [node name="Player" type="AnimatedSprite2D" parent="." unique_id=584388421]
 texture_filter = 3
-position = Vector2(368, 571)
+position = Vector2(575, 326)
 scale = Vector2(4.4375005, 4.4375005)
 sprite_frames = SubResource("SpriteFrames_gwjdr")
 animation = &"Idle"
@@ -137,4 +137,15 @@ texture = ExtResource("3_u44n3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box/Area2D" unique_id=1151357569]
 position = Vector2(-0.2108841, 0.9322033)
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Box2" type="Sprite2D" parent="." unique_id=1937114096]
+position = Vector2(540, 670)
+scale = Vector2(36.75, 1.84375)
+texture = ExtResource("3_u44n3")
+
+[node name="Area2D" type="Area2D" parent="Box2" unique_id=230262021]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box2/Area2D" unique_id=75308544]
+position = Vector2(-0.2108841, -3.5254211)
 shape = SubResource("RectangleShape2D_sb48q")
