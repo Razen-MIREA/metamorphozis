@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://duk0yxeqiqlg4" path="res://assets/sprites/Jelly.png" id="1_xkndl"]
 [ext_resource type="Script" uid="uid://bb5acpspjmm0a" path="res://scripts/player.gd" id="2_u44n3"]
+[ext_resource type="Texture2D" uid="uid://cmn41ko46t3j3" path="res://assets/sprites/Ground.png" id="3_u44n3"]
+[ext_resource type="Texture2D" uid="uid://bycv43sdpgedd" path="res://assets/sprites/Door.png" id="4_t88pq"]
+[ext_resource type="Texture2D" uid="uid://2cv57oy4lbpt" path="res://assets/sprites/HospitalWall.png" id="5_r0x5m"]
+[ext_resource type="Texture2D" uid="uid://dkr0dmj0qn41m" path="res://assets/sprites/Window.png" id="6_r0x5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u44n3"]
 atlas = ExtResource("1_xkndl")
@@ -68,7 +72,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Boom",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -100,26 +104,101 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvtmh"]
-size = Vector2(21.714298, 22.785717)
+[sub_resource type="CircleShape2D" id="CircleShape2D_u44n3"]
+radius = 11.642227
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb48q"]
+size = Vector2(31.94851, 33.463146)
 
 [node name="Node2D" type="Node2D" unique_id=211646541]
 
-[node name="Player" type="AnimatedSprite2D" parent="." unique_id=584388421]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1214897973]
+z_index = 10
+script = ExtResource("2_u44n3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=584388421]
 texture_filter = 3
-position = Vector2(575, 326)
+position = Vector2(575, 324)
 scale = Vector2(4.4375005, 4.4375005)
 sprite_frames = SubResource("SpriteFrames_gwjdr")
 animation = &"Idle"
-frame_progress = 0.5095983
-script = ExtResource("2_u44n3")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player" unique_id=1847517357]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CharacterBody2D" unique_id=4415864]
-position = Vector2(-0.7142868, 2.8928528)
-scale = Vector2(0.9999994, 0.9999994)
-shape = SubResource("RectangleShape2D_lvtmh")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=848754643]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=848754643]
 position = Vector2(577, 324)
+zoom = Vector2(0.75, 0.75)
+process_callback = 0
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_vertical_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=4415864]
+position = Vector2(569.00006, 337)
+scale = Vector2(4.4374976, 4.4374976)
+shape = SubResource("CircleShape2D_u44n3")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=749842850]
+position = Vector2(1003.00006, -17)
+scale = Vector2(64.011154, -2.7504199)
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=640726830]
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=84834152]
+texture = ExtResource("3_u44n3")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=938010894]
+position = Vector2(1010.00006, 700.00006)
+scale = Vector2(64.011154, 9.009582)
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1259299863]
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=252060865]
+texture = ExtResource("3_u44n3")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1163102353]
+position = Vector2(2053.0002, 282)
+rotation = 1.5735242
+scale = Vector2(36.371025, 3.048128)
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=862003791]
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightWall" unique_id=284071294]
+texture = ExtResource("3_u44n3")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=613263697]
+position = Vector2(-35, 269)
+rotation = 1.5735242
+scale = Vector2(36.371025, 3.048128)
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1651274233]
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftWall" unique_id=1311359582]
+texture = ExtResource("3_u44n3")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=207281465]
+position = Vector2(1607, 332)
+scale = Vector2(14.04, 14.107582)
+texture = ExtResource("4_t88pq")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=957515361]
+modulate = Color(0.83632696, 0.83632696, 0.83632696, 1)
+z_index = -1
+texture_repeat = 2
+position = Vector2(1012.5, 298)
+scale = Vector2(4, 4)
+texture = ExtResource("5_r0x5m")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 250)
+
+[node name="Window" type="Sprite2D" parent="." unique_id=197451739]
+modulate = Color(0.9612289, 0.961229, 0.9612289, 1)
+position = Vector2(855, 288)
+scale = Vector2(-11.141564, -11.141564)
+texture = ExtResource("6_r0x5m")
