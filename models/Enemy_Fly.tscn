@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bab08g5kn0ti5"]
 
-[ext_resource type="Script" uid="uid://cb40tws3qhtht" path="res://fly_logic.gd" id="1_m3m4b"]
+[ext_resource type="Script" uid="uid://cb40tws3qhtht" path="res://scripts/fly_logic.gd" id="1_m3m4b"]
 [ext_resource type="Texture2D" uid="uid://g7arax7utdm3" path="res://assets/sprites/Fly.png" id="2_u6w42"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsoai"]

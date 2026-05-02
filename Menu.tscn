@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://keagahlolhmb"]
+
+[ext_resource type="Script" uid="uid://curskwfhq4aeq" path="res://scripts/menu_buttons.gd" id="1_cx167"]
+[ext_resource type="Texture2D" uid="uid://bo1mq5mwl53fl" path="res://assets/sprites/buttonStart.png" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://dhm3ah3kvofvs" path="res://assets/sprites/buttonExit.png" id="2_5yleq"]
+[ext_resource type="Texture2D" uid="uid://xg245p5u17ti" path="res://assets/sprites/buttonAchive.png" id="3_ylpcl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylpcl"]
+atlas = ExtResource("1_uubjt")
+region = Rect2(16, 25, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx167"]
+atlas = ExtResource("1_uubjt")
+region = Rect2(80, 26, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dolsu"]
+atlas = ExtResource("2_5yleq")
+region = Rect2(16, 25, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4eug"]
+atlas = ExtResource("2_5yleq")
+region = Rect2(80, 26, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlksc"]
+atlas = ExtResource("3_ylpcl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcwhg"]
+atlas = ExtResource("3_ylpcl")
+region = Rect2(80, 16, 16, 16)
+
+[node name="Node2D" type="Node2D" unique_id=600440590]
+script = ExtResource("1_cx167")
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=832413301]
+offset_left = 416.0
+offset_top = 205.0
+offset_right = 653.38824
+offset_bottom = 319.0
+texture_normal = SubResource("AtlasTexture_ylpcl")
+texture_hover = SubResource("AtlasTexture_cx167")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=542625140]
+offset_left = 417.0
+offset_top = 363.0
+offset_right = 654.38824
+offset_bottom = 477.0
+texture_normal = SubResource("AtlasTexture_dolsu")
+texture_hover = SubResource("AtlasTexture_n4eug")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1680350915]
+offset_left = 789.0
+offset_top = 283.0
+offset_right = 890.0
+offset_bottom = 384.0
+texture_normal = SubResource("AtlasTexture_dlksc")
+texture_hover = SubResource("AtlasTexture_hcwhg")
+stretch_mode = 0

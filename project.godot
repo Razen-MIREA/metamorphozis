@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Metamorphozis"
-run/main_scene="uid://d2ydr8ktsuxn4"
+run/main_scene="uid://keagahlolhmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

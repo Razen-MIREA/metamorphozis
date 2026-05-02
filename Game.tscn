@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dkr0dmj0qn41m" path="res://assets/sprites/Window.png" id="6_r0x5m"]
 [ext_resource type="Texture2D" uid="uid://c83w7s5jgms7o" path="res://assets/sprites/LavenderRaf.png" id="9_2vekm"]
 [ext_resource type="Texture2D" uid="uid://c6lx5jjpoyn4s" path="res://assets/sprites/fork.png" id="9_yhmtn"]
-[ext_resource type="Script" uid="uid://conocci4jmcrn" path="res://fork.gd" id="10_gwjdr"]
-[ext_resource type="Script" uid="uid://c7s03klw3nt3q" path="res://spawner.gd" id="10_yx171"]
+[ext_resource type="Script" uid="uid://conocci4jmcrn" path="res://scripts/fork.gd" id="10_gwjdr"]
+[ext_resource type="Script" uid="uid://c7s03klw3nt3q" path="res://scripts/spawner.gd" id="10_yx171"]
 [ext_resource type="Texture2D" uid="uid://dwjcb4nhsf2rt" path="res://assets/sprites/knife.png" id="11_lvtmh"]
-[ext_resource type="Script" uid="uid://cuixaeoxjl4n2" path="res://knife.gd" id="12_gwjdr"]
+[ext_resource type="Script" uid="uid://cuixaeoxjl4n2" path="res://scripts/knife.gd" id="12_gwjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0x5m"]
 atlas = ExtResource("1_xkndl")
