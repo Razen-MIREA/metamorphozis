@@ -15,6 +15,21 @@ const MIN_SCALE = 1.0
 func _ready() -> void:
 	$AnimatedSprite2D.scale = Vector2.ONE * MIN_SCALE
 	$AnimatedSprite2D.play("Idle")
+	
+func _input(event):
+	if event.is_action_pressed("Attack"):
+		var bullet_scene = load("res://models/bullet.tscn")
+		var bullet = bullet_scene.instantiate()
+		
+		# Считаем направление от игрока к мышке
+		var dir = (get_global_mouse_position() - global_position).normalized()
+		
+		# Передаем данные ВНУТРЬ пули
+		bullet.rotation = dir.angle()
+		bullet.global_position = global_position # Спавним в центре игрока
+		
+		# Добавляем на сцену
+		get_tree().current_scene.add_child(bullet)
 
 func _physics_process(delta: float) -> void:
 	if LOSE:
@@ -22,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	var is_jetting = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	var is_jetting = Input.is_action_pressed("Shift")
 	var sprite = $AnimatedSprite2D
 	
 	if is_jetting:
