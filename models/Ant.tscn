@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://kfoyhp7by18b"]
+
+[ext_resource type="Texture2D" uid="uid://gw261la74fsd" path="res://assets/sprites/Ant.png" id="1_6d58j"]
+[ext_resource type="Script" uid="uid://dbejtlwt5u12l" path="res://scripts/ant_logic.gd" id="1_yahas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mevm"]
+atlas = ExtResource("1_6d58j")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2501"]
+atlas = ExtResource("1_6d58j")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yahas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mevm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2501")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ll1"]
+size = Vector2(22.461273, 15.878054)
+
+[node name="Node2D" type="Node2D" unique_id=35764899]
+
+[node name="Ant" type="CharacterBody2D" parent="." unique_id=1982538305]
+script = ExtResource("1_yahas")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ant" unique_id=1877975519]
+position = Vector2(584, 324)
+scale = Vector2(6.36, 6.36)
+sprite_frames = SubResource("SpriteFrames_yahas")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ant" unique_id=1509016327]
+position = Vector2(589.8771, 307.5)
+scale = Vector2(4.975421, 4.975421)
+shape = SubResource("RectangleShape2D_y1ll1")

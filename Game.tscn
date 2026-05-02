@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bycv43sdpgedd" path="res://assets/sprites/Door.png" id="4_t88pq"]
 [ext_resource type="Texture2D" uid="uid://2cv57oy4lbpt" path="res://assets/sprites/HospitalWall.png" id="5_r0x5m"]
 [ext_resource type="Texture2D" uid="uid://dkr0dmj0qn41m" path="res://assets/sprites/Window.png" id="6_r0x5m"]
-[ext_resource type="Texture2D" uid="uid://gw261la74fsd" path="res://assets/sprites/Ant.png" id="7_3mrqo"]
-[ext_resource type="Texture2D" uid="uid://g7arax7utdm3" path="res://assets/sprites/Fly.png" id="8_joorw"]
 [ext_resource type="Texture2D" uid="uid://c83w7s5jgms7o" path="res://assets/sprites/LavenderRaf.png" id="9_2vekm"]
+[ext_resource type="PackedScene" uid="uid://bab08g5kn0ti5" path="res://models/Fly.tscn" id="9_yhmtn"]
+[ext_resource type="PackedScene" uid="uid://kfoyhp7by18b" path="res://models/Ant.tscn" id="9_yx171"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0x5m"]
 atlas = ExtResource("1_xkndl")
@@ -153,67 +153,20 @@ radius = 11.642227
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb48q"]
 size = Vector2(31.94851, 33.463146)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mevm"]
-atlas = ExtResource("7_3mrqo")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2501"]
-atlas = ExtResource("7_3mrqo")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jsoai"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mevm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2501")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mrqo"]
-size = Vector2(22.461273, 15.878054)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsoai"]
-atlas = ExtResource("8_joorw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bisgb"]
-atlas = ExtResource("8_joorw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y5ctq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsoai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bisgb")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 12.0
-}]
-
 [node name="Node2D" type="Node2D" unique_id=211646541]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1214897973]
+[node name="Jelly" type="CharacterBody2D" parent="." unique_id=1214897973 groups=["Player"]]
 z_index = 10
 script = ExtResource("2_u44n3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=584388421]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jelly" unique_id=584388421]
 texture_filter = 3
 position = Vector2(575, 324)
 scale = Vector2(4.4375005, 4.4375005)
 sprite_frames = SubResource("SpriteFrames_gwjdr")
 animation = &"Boom"
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=848754643]
+[node name="Camera2D" type="Camera2D" parent="Jelly" unique_id=848754643]
 position = Vector2(577, 324)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
@@ -221,7 +174,7 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_vertical_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=4415864]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jelly" unique_id=4415864]
 position = Vector2(569.00006, 337)
 scale = Vector2(4.4374976, 4.4374976)
 shape = SubResource("CircleShape2D_u44n3")
@@ -293,35 +246,22 @@ position = Vector2(855, 288)
 scale = Vector2(-11.141564, -11.141564)
 texture = ExtResource("6_r0x5m")
 
-[node name="Ant" type="RigidBody2D" parent="." unique_id=1938575630]
-position = Vector2(1311, -149)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ant" unique_id=1528248372]
-scale = Vector2(6.36, 6.36)
-sprite_frames = SubResource("SpriteFrames_jsoai")
-animation = &"Idle"
-frame_progress = 0.9803728
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ant" unique_id=1309476843]
-position = Vector2(5.877075, -16.5)
-scale = Vector2(4.975421, 4.975421)
-shape = SubResource("RectangleShape2D_3mrqo")
-
-[node name="Fly" type="RigidBody2D" parent="." unique_id=1426391755]
-position = Vector2(914, -160)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fly" unique_id=448349256]
-scale = Vector2(6.36, 6.36)
-sprite_frames = SubResource("SpriteFrames_y5ctq")
-animation = &"Idle"
-frame_progress = 0.39419937
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly" unique_id=1492784333]
-position = Vector2(-22, -28)
-scale = Vector2(4.975421, 4.975421)
-shape = SubResource("RectangleShape2D_3mrqo")
-
 [node name="LavenderRaf" type="Sprite2D" parent="." unique_id=90584577]
 position = Vector2(1593.9998, 2458.5408)
 scale = Vector2(105.71874, 39.4206)
 texture = ExtResource("9_2vekm")
+
+[node name="Fly" parent="." unique_id=1198269334 instance=ExtResource("9_yhmtn")]
+position = Vector2(533, -134)
+
+[node name="Fly2" parent="." unique_id=1280800841 instance=ExtResource("9_yhmtn")]
+position = Vector2(827, -75)
+
+[node name="Fly3" parent="." unique_id=870886942 instance=ExtResource("9_yhmtn")]
+position = Vector2(655, 75)
+
+[node name="Node2D" parent="." unique_id=35764899 instance=ExtResource("9_yx171")]
+position = Vector2(1224, 159)
+
+[node name="Node2D2" parent="." unique_id=519776133 instance=ExtResource("9_yx171")]
+position = Vector2(910, 166)

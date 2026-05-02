@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bmap4qphkcm64"]
+
+[ext_resource type="Script" uid="uid://bjkp8hnw3nv8u" path="res://scripts/health_bar.gd" id="1_m7ell"]
+
+[sub_resource type="Gradient" id="Gradient_kdjhy"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_srckl"]
+gradient = SubResource("Gradient_kdjhy")
+
+[sub_resource type="Gradient" id="Gradient_1r8bn"]
+offsets = PackedFloat32Array(0.99759614, 1)
+colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxn08"]
+gradient = SubResource("Gradient_1r8bn")
+
+[node name="Node2D" type="Node2D" unique_id=2068928937]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=925262641]
+script = ExtResource("1_m7ell")
+
+[node name="HealthRed" type="Sprite2D" parent="CanvasLayer" unique_id=1454234212]
+scale = Vector2(0.75, 40.233383)
+texture = SubResource("GradientTexture1D_srckl")
+
+[node name="HealthGreen" type="Sprite2D" parent="CanvasLayer" unique_id=215615649]
+scale = Vector2(0.7598138, 40)
+texture = SubResource("GradientTexture1D_dxn08")

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bab08g5kn0ti5"]
+
+[ext_resource type="Script" uid="uid://cb40tws3qhtht" path="res://fly_logic.gd" id="1_m3m4b"]
+[ext_resource type="Texture2D" uid="uid://g7arax7utdm3" path="res://assets/sprites/Fly.png" id="2_u6w42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsoai"]
+atlas = ExtResource("2_u6w42")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bisgb"]
+atlas = ExtResource("2_u6w42")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5jo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsoai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bisgb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g26o"]
+size = Vector2(22.461273, 15.878054)
+
+[node name="Node2D" type="Node2D" unique_id=1198269334]
+
+[node name="Fly" type="CharacterBody2D" parent="." unique_id=1890574274]
+script = ExtResource("1_m3m4b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fly" unique_id=328931431]
+position = Vector2(584, 324)
+scale = Vector2(6.36, 6.36)
+sprite_frames = SubResource("SpriteFrames_i5jo3")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly" unique_id=66530634]
+position = Vector2(562, 296)
+scale = Vector2(4.975421, 4.975421)
+shape = SubResource("RectangleShape2D_6g26o")
