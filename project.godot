@@ -32,6 +32,9 @@ version_control/autoload_on_startup=true
 Player=""
 root=""
 Enemy=""
+Raf1=""
+Raf2=""
+Finish=""
 
 [input]
 

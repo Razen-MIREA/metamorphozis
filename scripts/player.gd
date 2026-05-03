@@ -15,8 +15,20 @@ const MIN_SCALE = 1.0
 var health = 100.0
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
+	print(body.name)
 	if body.is_in_group("Enemy"):
+		health -= 10.0
 		get_child(4).get_child(0).takeDMG(self, 10.0)
+	elif body.is_in_group("Raf1"):
+		get_child(4).get_child(0).takeDMG(self, health - 100.0)
+		modulate = Color(0.792, 0.0, 0.976, 1.0)
+		body.queue_free()
+	elif body.is_in_group("Raf2"):
+		get_child(4).get_child(0).takeDMG(self, health - 100.0)
+		modulate = Color(0.991, 0.992, 0.15, 1.0)
+		body.queue_free()
+	elif body.is_in_group("Finish"):
+		get_tree().change_scene_to_file("res://Menu.tscn")
 
 func _ready() -> void:
 	$AnimatedSprite2D.scale = Vector2.ONE * MIN_SCALE
