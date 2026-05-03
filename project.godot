@@ -10,14 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Metamorphozis"
+config/name="JET-POP"
 run/main_scene="uid://keagahlolhmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cg0mr86rot4kf"
 
 [display]
 
-window/size/resizable=false
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 

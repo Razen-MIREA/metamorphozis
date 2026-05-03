@@ -33,30 +33,30 @@ region = Rect2(80, 16, 16, 16)
 script = ExtResource("1_cx167")
 
 [node name="PlayButton" type="TextureButton" parent="." unique_id=832413301]
-offset_left = 416.0
-offset_top = 205.0
-offset_right = 653.38824
-offset_bottom = 319.0
+offset_left = 507.0
+offset_top = 218.0
+offset_right = 744.38824
+offset_bottom = 332.0
 texture_normal = SubResource("AtlasTexture_ylpcl")
 texture_hover = SubResource("AtlasTexture_cx167")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="TextureButton" parent="." unique_id=542625140]
-offset_left = 417.0
-offset_top = 363.0
-offset_right = 654.38824
-offset_bottom = 477.0
+offset_left = 508.0
+offset_top = 376.0
+offset_right = 745.38824
+offset_bottom = 490.0
 texture_normal = SubResource("AtlasTexture_dolsu")
 texture_hover = SubResource("AtlasTexture_n4eug")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1680350915]
-offset_left = 789.0
-offset_top = 283.0
-offset_right = 890.0
-offset_bottom = 384.0
+offset_left = 880.0
+offset_top = 296.0
+offset_right = 981.0
+offset_bottom = 397.0
 texture_normal = SubResource("AtlasTexture_dlksc")
 texture_hover = SubResource("AtlasTexture_hcwhg")
 stretch_mode = 0
