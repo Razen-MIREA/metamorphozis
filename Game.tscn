@@ -728,7 +728,7 @@ scale = Vector2(1.7119585, 1.0579603)
 shape = SubResource("RectangleShape2D_lvtmh")
 
 [node name="Raf2" type="StaticBody2D" parent="." unique_id=1735994309 groups=["Raf2"]]
-position = Vector2(13873, -142)
+position = Vector2(4378, -1582)
 
 [node name="Raf2" type="Sprite2D" parent="Raf2" unique_id=1086536968]
 position = Vector2(304, 387)
