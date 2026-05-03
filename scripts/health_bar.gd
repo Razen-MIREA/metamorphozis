@@ -21,4 +21,5 @@ func takeDMG(target_node: Node2D, dmg : float) -> void:
 		if target_node.is_in_group("Player"):
 			target_node.explode()
 		elif target_node.is_in_group("Enemy"):
+			ClassGame.add_kill()
 			target_node.queue_free()

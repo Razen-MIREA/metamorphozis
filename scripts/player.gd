@@ -15,22 +15,43 @@ const MIN_SCALE = 1.0
 var health = 100.0
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	print(body.name)
+	#print(body.name)
 	if body.is_in_group("Enemy"):
 		health -= 10.0
 		get_child(4).get_child(0).takeDMG(self, 10.0)
 	elif body.is_in_group("Raf1"):
+		ClassGame.setDMG(33.4)
 		get_child(4).get_child(0).takeDMG(self, health - 100.0)
 		modulate = Color(0.792, 0.0, 0.976, 1.0)
+		sound2.play()
 		body.queue_free()
 	elif body.is_in_group("Raf2"):
+		ClassGame.setDMG(50.0)
 		get_child(4).get_child(0).takeDMG(self, health - 100.0)
 		modulate = Color(0.991, 0.992, 0.15, 1.0)
+		sound2.play()
 		body.queue_free()
 	elif body.is_in_group("Finish"):
-		get_tree().change_scene_to_file("res://Menu.tscn")
+		ClassGame.change()
+		get_tree().change_scene_to_file("res://End.tscn")
 
+var pop = AudioStreamPlayer2D.new()
+var sound = AudioStreamPlayer2D.new()
+var sound2 = AudioStreamPlayer2D.new()
 func _ready() -> void:
+	ClassGame.setDMG(20.0)
+	sound.stream = load("res://assets/sfx/bulletEffect.wav")
+	call_deferred("add_child", sound)
+	sound.volume_linear = 0.33
+	
+	sound2.stream = load("res://assets/sfx/Victory Fanfare.wav")
+	call_deferred("add_child", sound2)
+	sound2.volume_linear = 0.33
+	
+	pop.stream = load("res://assets/sfx/pop.mp3")
+	call_deferred("add_child", pop)
+	pop.volume_linear = 0.33
+	
 	$AnimatedSprite2D.scale = Vector2.ONE * MIN_SCALE
 	$AnimatedSprite2D.play("Idle")
 	$Area2D.body_entered.connect(_on_hit_box_body_entered)
@@ -44,6 +65,7 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("Attack"):
 		var bullet = bullet_path.instantiate()
+		sound.play()
 		
 		# owner — это корень всей сцены (например, Level1)
 		# Если owner не сработает, используй get_tree().current_scene.add_child(bullet)
@@ -123,6 +145,9 @@ func explode():
 	if LOSE: return
 	LOSE = true
 	$AnimatedSprite2D.play("Boom")
+	
+	pop.play()
+	
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "scale", $AnimatedSprite2D.scale * 1.3, 0.1)
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, 0.3)

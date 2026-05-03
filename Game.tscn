@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bb5acpspjmm0a" path="res://scripts/player.gd" id="2_u44n3"]
 [ext_resource type="Texture2D" uid="uid://cmn41ko46t3j3" path="res://assets/sprites/Ground.png" id="3_u44n3"]
 [ext_resource type="Texture2D" uid="uid://bycv43sdpgedd" path="res://assets/sprites/Door.png" id="4_t88pq"]
-[ext_resource type="Script" uid="uid://bknyln0nn2qbi" path="res://door.gd" id="5_lvtmh"]
+[ext_resource type="Script" uid="uid://bknyln0nn2qbi" path="res://scripts/door.gd" id="5_lvtmh"]
 [ext_resource type="Texture2D" uid="uid://2cv57oy4lbpt" path="res://assets/sprites/HospitalWall.png" id="5_r0x5m"]
 [ext_resource type="Texture2D" uid="uid://dkr0dmj0qn41m" path="res://assets/sprites/Window.png" id="6_r0x5m"]
 [ext_resource type="Texture2D" uid="uid://c83w7s5jgms7o" path="res://assets/sprites/LavenderRaf.png" id="9_2vekm"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://c7s03klw3nt3q" path="res://scripts/spawner.gd" id="10_yx171"]
 [ext_resource type="Texture2D" uid="uid://dwjcb4nhsf2rt" path="res://assets/sprites/knife.png" id="11_lvtmh"]
 [ext_resource type="Script" uid="uid://cuixaeoxjl4n2" path="res://scripts/knife.gd" id="12_gwjdr"]
+[ext_resource type="Script" uid="uid://djbfu2v4edtro" path="res://scripts/main_door.gd" id="14_yyih5"]
+[ext_resource type="Script" uid="uid://vp14m3krxhhb" path="res://label.gd" id="15_qjyg3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0x5m"]
 atlas = ExtResource("1_xkndl")
@@ -769,6 +771,7 @@ texture = ExtResource("6_r0x5m")
 position = Vector2(626, -4990)
 scale = Vector2(23.6525, 25.636295)
 texture = ExtResource("4_t88pq")
+script = ExtResource("14_yyih5")
 
 [node name="Area2D" type="Area2D" parent="MainDoor" unique_id=1868256801]
 collision_mask = 7
@@ -777,3 +780,22 @@ collision_mask = 7
 position = Vector2(0.12683678, 2.8865356)
 scale = Vector2(0.99999976, 0.9999999)
 shape = SubResource("RectangleShape2D_yyih5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1566950379]
+script = ExtResource("15_qjyg3")
+
+[node name="Kills" type="Label" parent="CanvasLayer" unique_id=1678527631]
+offset_left = 1096.0
+offset_top = 613.00006
+offset_right = 1156.0
+offset_bottom = 645.00006
+scale = Vector2(2.12, 2.2000003)
+text = "Kills: 0"
+
+[node name="Counter" type="Label" parent="CanvasLayer" unique_id=740196620]
+offset_left = 26.000244
+offset_top = 613.00006
+offset_right = 109.000244
+offset_bottom = 645.00006
+scale = Vector2(2.12, 2.2000003)
+text = "Enemies: 0"

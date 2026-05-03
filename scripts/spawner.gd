@@ -16,6 +16,7 @@ func spawn(body):
 		
 		for i in range(3):
 			var enemy : Node2D = enemy_scene.instantiate()
+			ClassGame.add_enemy()
 			#enemy.add_to_group("Enemy")
 			enemy.name = enemyName + str(i)
 			enemy.global_position = marker.global_position + Vector2(randf_range(-5.0, 5.0), 0)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b0ettck5mwd4m"]
+
+[ext_resource type="Script" uid="uid://cjsxf05wewsw4" path="res://scripts/end.gd" id="1_lm0ep"]
+
+[node name="Node2D" type="Node2D" unique_id=600440590]
+script = ExtResource("1_lm0ep")
+
+[node name="Label" type="Label" parent="." unique_id=140916130]
+offset_left = 59.0
+offset_top = 181.0
+offset_right = 1026.0
+offset_bottom = 346.6549
+scale = Vector2(1.1804144, 1.3823917)
+text = "Спасибо за прохождение нашей игры - \"JET-POP!\"
+
+Надеюсь, вы не потратили много попыток чтобы пройти ее. Честно мы хотели многое сделать, но получилось
+не как мы хотели, но даже интересно наблюдать за тем, что получилось в итоге.
+
+Ваша поддержка — это то, что заставляет нас нажимать \"New Script\" снова и снова. Спасибо, что долетели до финала!"
+
+[node name="Button" type="Button" parent="." unique_id=964282228]
+offset_left = 75.0
+offset_top = 602.0
+offset_right = 282.0
+offset_bottom = 662.0
+text = "Назад"

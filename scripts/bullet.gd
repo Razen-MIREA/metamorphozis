@@ -7,10 +7,11 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
+		var dmg = ClassGame.getDMG()
 		var health_bar = body.get_child(2).find_child("HealthBar", true, false) 
 		
 		if health_bar and health_bar.has_method("takeDMG"):
-			health_bar.takeDMG(body, 20.0)
+			health_bar.takeDMG(body, dmg)
 		queue_free()
 	elif not body.is_in_group("Player"):
 		queue_free()
