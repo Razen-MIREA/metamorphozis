@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="JET-POP"
+config/name="JET-POP!"
+config/version="1.0.0"
 run/main_scene="uid://keagahlolhmb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
