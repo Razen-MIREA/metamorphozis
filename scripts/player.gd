@@ -6,30 +6,42 @@ var LOSE = false
 const WALK_SPEED = 600.0
 const JUMP_VELOCITY = 700.0 * -1.0
 const GRAVITY = 1800.0
-const THRUST_POWER = 1200.0 
+const THRUST_POWER = 900.0
 const GROWTH_SPEED = 1.0
 const SHRINK_SPEED = 2.0
 const MAX_SCALE = 10.0
 const MIN_SCALE = 1.0
 
+var health = 100.0
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		get_child(4).get_child(0).takeDMG(self, 10.0)
+
 func _ready() -> void:
 	$AnimatedSprite2D.scale = Vector2.ONE * MIN_SCALE
 	$AnimatedSprite2D.play("Idle")
+	$Area2D.body_entered.connect(_on_hit_box_body_entered)
+	var health = load("res://models/health_bar.tscn").instantiate()
+	health.position = Vector2(415, 250)
+	add_child(health)
 	
+# В самом верху скрипта добавь предзагрузку, чтобы не лагало
+@onready var bullet_path = preload("res://models/bullet.tscn")
+
 func _input(event):
 	if event.is_action_pressed("Attack"):
-		var bullet_scene = load("res://models/bullet.tscn")
-		var bullet = bullet_scene.instantiate()
+		var bullet = bullet_path.instantiate()
 		
-		# Считаем направление от игрока к мышке
-		var dir = (get_global_mouse_position() - global_position).normalized()
-		
-		# Передаем данные ВНУТРЬ пули
-		bullet.rotation = dir.angle()
-		bullet.global_position = global_position # Спавним в центре игрока
-		
-		# Добавляем на сцену
+		# owner — это корень всей сцены (например, Level1)
+		# Если owner не сработает, используй get_tree().current_scene.add_child(bullet)
 		get_tree().current_scene.add_child(bullet)
+		
+		# Устанавливаем позицию ПОСЛЕ добавления на сцену
+		bullet.global_position = global_position + $Camera2D.position
+		
+		# Поворачиваем на мышь
+		bullet.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
 	if LOSE:
@@ -44,14 +56,17 @@ func _physics_process(delta: float) -> void:
 		# --- РЕЖИМ ПОЛЕТА (JET) ---
 		sprite.scale = sprite.scale.lerp(Vector2.ONE * MIN_SCALE, SHRINK_SPEED * delta)
 		
+		# ПРОВЕРКА НА СМЕРТЬ ОТ МИНИМАЛЬНОГО РАЗМЕРА
+		# Если масштаб стал почти равен минимальному (с небольшим запасом)
+		if sprite.scale.x <= MIN_SCALE + 0.05:
+			explode()
+			return # Выходим из функции, чтобы не лететь дальше
+			
 		var mouse_pos = get_global_mouse_position()
-		var dir = (mouse_pos - global_position - $Camera2D.position).normalized() # Убрал лишнюю камеру из расчета
+		var dir = (mouse_pos - global_position - $Camera2D.position).normalized()
 		
-		# В режиме полета мы игнорируем гравитацию, чтобы не "проседать"
 		velocity = velocity.lerp(dir * THRUST_POWER, 0.1) 
 		sprite.rotation = lerp_angle(sprite.rotation, velocity.angle(), 0.2)
-		
-		# Если есть анимация полета — включи её тут
 	else:
 		# --- РЕЖИМ ПЛАТФОРМЕРА (POP) ---
 		sprite.rotation = lerp_angle(sprite.rotation, 0, 0.1)
@@ -99,4 +114,4 @@ func explode():
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "scale", $AnimatedSprite2D.scale * 1.3, 0.1)
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, 0.3)
-	get_tree().create_timer(4.0/5).timeout.connect(func(): get_tree().reload_current_scene())
+	get_tree().create_timer(4.0/5).timeout.connect(func(): get_tree().change_scene_to_file("res://Menu.tscn"))

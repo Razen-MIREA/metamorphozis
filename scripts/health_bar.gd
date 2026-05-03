@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 var health = 100.0
 var healthMax = 100.0
@@ -14,6 +14,11 @@ func updHealth():
 func _ready() -> void:
 	updHealth()
 
-func _process(delta: float) -> void:
+func takeDMG(target_node: Node2D, dmg : float) -> void:
+	health -= dmg
 	updHealth()
-	#health -= 10.0 * delta
+	if health <= 0.0:
+		if target_node.is_in_group("Player"):
+			target_node.explode()
+		elif target_node.is_in_group("Enemy"):
+			target_node.queue_free()

@@ -153,13 +153,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_u44n3"]
 radius = 11.642227
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwjdr"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb48q"]
 size = Vector2(31.94851, 33.463146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjdr"]
+size = Vector2(8.306698, 19.100702)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvtmh"]
+size = Vector2(1.8947392, 16.015886)
 
 [node name="Node2D" type="Node2D" unique_id=211646541 groups=["root"]]
 
 [node name="Jelly" type="CharacterBody2D" parent="." unique_id=1214897973 groups=["Player"]]
 z_index = 10
+collision_layer = 2
 script = ExtResource("2_u44n3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jelly" unique_id=584388421]
@@ -181,6 +190,15 @@ drag_vertical_enabled = true
 position = Vector2(569.00006, 337)
 scale = Vector2(4.4374976, 4.4374976)
 shape = SubResource("CircleShape2D_u44n3")
+
+[node name="Area2D" type="Area2D" parent="Jelly" unique_id=92162182]
+position = Vector2(574, 338)
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jelly/Area2D" unique_id=1272630813]
+position = Vector2(-1, 0)
+scale = Vector2(7.973916, 7.0157003)
+shape = SubResource("CircleShape2D_gwjdr")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=749842850]
 position = Vector2(2173, -154)
@@ -228,6 +246,18 @@ shape = SubResource("RectangleShape2D_sb48q")
 [node name="Sprite2D" type="Sprite2D" parent="LeftWall" unique_id=1311359582]
 texture = ExtResource("3_u44n3")
 
+[node name="RightWall2" type="StaticBody2D" parent="." unique_id=845794128]
+position = Vector2(4991.0005, 46)
+rotation = 1.5735242
+scale = Vector2(50.688023, 3.048128)
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall2" unique_id=544202787]
+shape = SubResource("RectangleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightWall2" unique_id=1354721490]
+texture = ExtResource("3_u44n3")
+
 [node name="Door" type="Sprite2D" parent="." unique_id=207281465]
 position = Vector2(2395, 332)
 scale = Vector2(14.04, 14.107582)
@@ -254,27 +284,6 @@ position = Vector2(1593.9998, 2458.5408)
 scale = Vector2(105.71874, 39.4206)
 texture = ExtResource("9_2vekm")
 
-[node name="Enemies" type="Node2D" parent="." unique_id=1613647622]
-script = ExtResource("10_yx171")
-
-[node name="Fly" type="Marker2D" parent="Enemies" unique_id=2008515078]
-position = Vector2(1544, 273)
-
-[node name="Ant" type="Marker2D" parent="Enemies" unique_id=1499747849]
-position = Vector2(1420, -302)
-
-[node name="RightWall2" type="StaticBody2D" parent="." unique_id=845794128]
-position = Vector2(4991.0005, 46)
-rotation = 1.5735242
-scale = Vector2(50.688023, 3.048128)
-disable_mode = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall2" unique_id=544202787]
-shape = SubResource("RectangleShape2D_sb48q")
-
-[node name="Sprite2D" type="Sprite2D" parent="RightWall2" unique_id=1354721490]
-texture = ExtResource("3_u44n3")
-
 [node name="Fork" type="Sprite2D" parent="." unique_id=123368551]
 position = Vector2(3754, -208.99997)
 rotation = 3.1415927
@@ -282,9 +291,36 @@ scale = Vector2(29.133265, 23.474014)
 texture = ExtResource("9_yhmtn")
 script = ExtResource("10_gwjdr")
 
+[node name="Area2D" type="Area2D" parent="Fork" unique_id=485938765]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fork/Area2D" unique_id=887870560]
+position = Vector2(-0.5148468, -5.1625166)
+scale = Vector2(0.99999964, 0.9999999)
+shape = SubResource("RectangleShape2D_gwjdr")
+
 [node name="Knife" type="Sprite2D" parent="." unique_id=619242720]
 position = Vector2(3123.0002, -97.58203)
 rotation = 3.1415927
 scale = Vector2(29.133265, 37.239944)
 texture = ExtResource("11_lvtmh")
 script = ExtResource("12_gwjdr")
+
+[node name="Area2D" type="Area2D" parent="Knife" unique_id=346429437]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knife/Area2D" unique_id=1345916255]
+position = Vector2(0.41190994, 4.146568)
+scale = Vector2(1.7119585, 1.0579603)
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1613647622]
+position = Vector2(-0.00024414063, 0)
+scale = Vector2(1.0000001, 1)
+script = ExtResource("10_yx171")
+
+[node name="Fly" type="Marker2D" parent="Enemies" unique_id=2008515078]
+position = Vector2(1544, 273)
+
+[node name="Ant" type="Marker2D" parent="Enemies" unique_id=1499747849]
+position = Vector2(1420, -302)

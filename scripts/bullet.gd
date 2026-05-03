@@ -1,19 +1,21 @@
 extends Area2D
 
-var direction = Vector2.ZERO # Это мы установим из игрока
-var speed = 1500.0
+var speed = 1000.0
 
-func _ready():
-	# Поворачиваем пулю по вектору полета
-	if direction != Vector2.ZERO:
-		rotation = direction.angle()
-	# Удаляем через 3 секунды, чтобы не копить мусор
-	get_tree().create_timer(3.0).timeout.connect(queue_free)
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		var health_bar = body.get_child(2).find_child("HealthBar", true, false) 
+		
+		if health_bar and health_bar.has_method("takeDMG"):
+			health_bar.takeDMG(body, 20.0)
+		queue_free()
+	elif not body.is_in_group("Player"):
+		queue_free()
 
 func _physics_process(delta):
-	position += direction * speed * delta
-
-func _on_body_entered(body):
-	if body.is_in_group("Enemies"):
-		body.queue_free() # Убиваем врага
-	queue_free() # Сама пуля лопается
+	# Движение в сторону поворота (куда смотрит нос)
+	# Vector2.RIGHT.rotated(rotation) — это универсальный способ
+	position += Vector2.RIGHT.rotated(rotation) * speed * delta

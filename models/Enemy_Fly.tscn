@@ -25,12 +25,14 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g26o"]
-size = Vector2(22.461273, 15.878054)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cq5tt"]
+radius = 7.8385315
 
 [node name="Node2D" type="Node2D" unique_id=1198269334]
 
-[node name="Fly" type="CharacterBody2D" parent="." unique_id=1890574274]
+[node name="Fly" type="CharacterBody2D" parent="." unique_id=1890574274 groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_m3m4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fly" unique_id=328931431]
@@ -42,4 +44,4 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fly" unique_id=66530634]
 position = Vector2(562, 296)
 scale = Vector2(4.975421, 4.975421)
-shape = SubResource("RectangleShape2D_6g26o")
+shape = SubResource("CircleShape2D_cq5tt")

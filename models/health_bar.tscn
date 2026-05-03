@@ -18,13 +18,17 @@ gradient = SubResource("Gradient_1r8bn")
 
 [node name="Node2D" type="Node2D" unique_id=2068928937]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=925262641]
+[node name="HealthBar" type="Node2D" parent="." unique_id=1501346591]
 script = ExtResource("1_m7ell")
 
-[node name="HealthRed" type="Sprite2D" parent="CanvasLayer" unique_id=1454234212]
-scale = Vector2(0.75, 40.233383)
+[node name="HealthRed" type="Sprite2D" parent="HealthBar" unique_id=1454234212]
+position = Vector2(105.25616, 80.116684)
+rotation = -1.5707964
+scale = Vector2(0.3, 15)
 texture = SubResource("GradientTexture1D_srckl")
 
-[node name="HealthGreen" type="Sprite2D" parent="CanvasLayer" unique_id=215615649]
-scale = Vector2(0.7598138, 40)
+[node name="HealthGreen" type="Sprite2D" parent="HealthBar" unique_id=215615649]
+position = Vector2(105.25618, 80.11669)
+rotation = -1.5707964
+scale = Vector2(0.3, 15)
 texture = SubResource("GradientTexture1D_dxn08")

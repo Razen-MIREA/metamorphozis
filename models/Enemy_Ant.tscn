@@ -25,12 +25,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ll1"]
-size = Vector2(22.461273, 15.878054)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1lp8"]
+radius = 8.069858
 
 [node name="Node2D" type="Node2D" unique_id=35764899]
 
-[node name="Ant" type="CharacterBody2D" parent="." unique_id=1982538305]
+[node name="Ant" type="CharacterBody2D" parent="." unique_id=1982538305 groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_yahas")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ant" unique_id=1877975519]
@@ -42,4 +44,4 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ant" unique_id=1509016327]
 position = Vector2(589.8771, 307.5)
 scale = Vector2(4.975421, 4.975421)
-shape = SubResource("RectangleShape2D_y1ll1")
+shape = SubResource("CircleShape2D_g1lp8")

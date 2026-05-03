@@ -4,8 +4,13 @@ var start_pos : Vector2
 
 func _ready() -> void:
 	start_pos = position
+	$Area2D.body_entered.connect(_on_body_entered)
 	# Запускаем цикл ударов
 	start_strike_cycle()
+	
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		body.explode() # Убиваем врага
 
 func start_strike_cycle():
 	var tween = create_tween().set_loops() # Делаем цикл бесконечным
