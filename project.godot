@@ -18,6 +18,7 @@ config/icon="uid://cg0mr86rot4kf"
 [autoload]
 
 ClassGame="*uid://yaiiehti6h3j"
+GlobalMusic="*uid://dhp1txx2dmmmh"
 
 [display]
 
@@ -39,6 +40,7 @@ Enemy=""
 Raf1=""
 Raf2=""
 Finish=""
+rafBig=""
 
 [input]
 

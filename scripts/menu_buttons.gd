@@ -15,6 +15,7 @@ func _on_exit_button_pressed():
 func _on_load_button_pressed():
 	# Замените путь на вашу сцену с игрой
 	get_tree().change_scene_to_file("res://Game.tscn")
+	ClassGame.clear_data()
 
 func _on_finish_press():
 	get_tree().change_scene_to_file("res://End.tscn")

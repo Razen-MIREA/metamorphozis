@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhp1txx2dmmmh"]
+
+[ext_resource type="AudioStream" uid="uid://ds06udy6d6eo4" path="res://assets/sfx/bg_music.mp3" id="1_gqu61"]
+
+[node name="Node2D" type="Node2D" unique_id=600440590]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1948933733]
+stream = ExtResource("1_gqu61")
+volume_db = -25.0
+autoplay = true
+parameters/looping = true

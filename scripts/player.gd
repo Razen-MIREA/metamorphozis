@@ -34,23 +34,31 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("Finish"):
 		ClassGame.change()
 		get_tree().change_scene_to_file("res://End.tscn")
+	elif body.is_in_group("rafBig"):
+		ClassGame.found()
 
 var pop = AudioStreamPlayer2D.new()
 var sound = AudioStreamPlayer2D.new()
 var sound2 = AudioStreamPlayer2D.new()
+var music = AudioStreamPlayer2D.new()
+
 func _ready() -> void:
 	ClassGame.setDMG(20.0)
 	sound.stream = load("res://assets/sfx/bulletEffect.wav")
 	call_deferred("add_child", sound)
-	sound.volume_linear = 0.33
+	sound.volume_linear = 0.15
 	
 	sound2.stream = load("res://assets/sfx/Victory Fanfare.wav")
 	call_deferred("add_child", sound2)
-	sound2.volume_linear = 0.33
+	sound2.volume_linear = 0.15
 	
 	pop.stream = load("res://assets/sfx/pop.mp3")
 	call_deferred("add_child", pop)
-	pop.volume_linear = 0.33
+	pop.volume_linear = 0.15
+	
+	music.stream = load("res://assets/sfx/bg_music.mp3")
+	call_deferred("add_child", music)
+	music.volume_linear = 0.2
 	
 	$AnimatedSprite2D.scale = Vector2.ONE * MIN_SCALE
 	$AnimatedSprite2D.play("Idle")
@@ -58,6 +66,9 @@ func _ready() -> void:
 	var health = load("res://models/health_bar.tscn").instantiate()
 	health.position = Vector2(415, 250)
 	add_child(health)
+	
+	await get_tree().process_frame
+	#music.play()
 	
 # В самом верху скрипта добавь предзагрузку, чтобы не лагало
 @onready var bullet_path = preload("res://models/bullet.tscn")
@@ -145,7 +156,6 @@ func explode():
 	if LOSE: return
 	LOSE = true
 	$AnimatedSprite2D.play("Boom")
-	
 	pop.play()
 	
 	var tween = create_tween()
